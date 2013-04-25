@@ -6,9 +6,9 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
   <artifactId>arifactId</artifactId>
   <version>1.0</version>
   <packaging>pom</packaging>
-  <name>The Name of My Project</name>
+  <name>Test play github</name>
   <build>
-    <sourceDirectory>src/main/scala</sourceDirectory>
+    <sourceDirectory>app</sourceDirectory>
   </build>
   <properties>
     <sonar.language>scala</sonar.language>
