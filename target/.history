@@ -2,3 +2,5 @@ run
 compilme
 compile
 run
+dist help
+dist
