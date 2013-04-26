@@ -1,17 +1,1 @@
-[0m[[0mdebug[0m] [0m[0m
-[0m[[0mdebug[0m] [0mInitial source changes: [0m
-[0m[[0mdebug[0m] [0m	removed:Set(/vagrant/target/scala-2.9.1/src_managed/main/routes_reverseRouting.scala, /vagrant/target/scala-2.9.1/src_managed/main/views/html/index.template.scala, /vagrant/target/scala-2.9.1/src_managed/main/views/html/main.template.scala, /vagrant/target/scala-2.9.1/src_managed/main/routes_routing.scala, /vagrant/target/scala-2.9.1/src_managed/main/controllers/routes.java, /vagrant/app/models/Task.scala, /vagrant/app/controllers/Application.scala)[0m
-[0m[[0mdebug[0m] [0m	added: Set()[0m
-[0m[[0mdebug[0m] [0m	modified: Set()[0m
-[0m[[0mdebug[0m] [0mRemoved products: Set()[0m
-[0m[[0mdebug[0m] [0mModified external sources: Set()[0m
-[0m[[0mdebug[0m] [0mModified binary dependencies: Set(/home/play/play-2.0/repository/local/play/anorm_2.9.1/2.0/jars/anorm_2.9.1.jar, /home/play/play-2.0/repository/local/play/templates_2.9.1/2.0/jars/templates_2.9.1.jar, /home/play/play-2.0/repository/local/play/play_2.9.1/2.0/jars/play_2.9.1.jar)[0m
-[0m[[0mdebug[0m] [0mInitial directly invalidated sources: Set(/vagrant/target/scala-2.9.1/src_managed/main/routes_reverseRouting.scala, /vagrant/target/scala-2.9.1/src_managed/main/views/html/index.template.scala, /vagrant/target/scala-2.9.1/src_managed/main/views/html/main.template.scala, /vagrant/target/scala-2.9.1/src_managed/main/routes_routing.scala, /vagrant/target/scala-2.9.1/src_managed/main/controllers/routes.java, /vagrant/app/models/Task.scala, /vagrant/app/controllers/Application.scala)[0m
-[0m[[0mdebug[0m] [0m[0m
-[0m[[0mdebug[0m] [0mSources indirectly invalidated by:[0m
-[0m[[0mdebug[0m] [0m	product: Set()[0m
-[0m[[0mdebug[0m] [0m	binary dep: Set(/vagrant/target/scala-2.9.1/src_managed/main/routes_reverseRouting.scala, /vagrant/target/scala-2.9.1/src_managed/main/views/html/index.template.scala, /vagrant/target/scala-2.9.1/src_managed/main/views/html/main.template.scala, /vagrant/target/scala-2.9.1/src_managed/main/routes_routing.scala, /vagrant/app/models/Task.scala, /vagrant/app/controllers/Application.scala)[0m
-[0m[[0mdebug[0m] [0m	external source: Set()[0m
-[0m[[0mdebug[0m] [0mInitially invalidated: Set(/vagrant/target/scala-2.9.1/src_managed/main/routes_reverseRouting.scala, /vagrant/target/scala-2.9.1/src_managed/main/views/html/index.template.scala, /vagrant/target/scala-2.9.1/src_managed/main/views/html/main.template.scala, /vagrant/target/scala-2.9.1/src_managed/main/routes_routing.scala, /vagrant/target/scala-2.9.1/src_managed/main/controllers/routes.java, /vagrant/app/models/Task.scala, /vagrant/app/controllers/Application.scala)[0m
-[0m[[0mdebug[0m] [0m	Invalidated direct: Set()[0m
-[0m[[0mdebug[0m] [0mIncrementally invalidated: Set()[0m
+[0m[[0minfo[0m] [0mCompiling 6 Scala sources and 1 Java source to /vagrant/target/scala-2.9.1/classes...[0m

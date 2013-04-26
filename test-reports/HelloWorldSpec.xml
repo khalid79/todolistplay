@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<testSuite tests="3" name="HelloWorldSpec" failures="0" timestamp="2013-04-26T11:21:54+0200" time="0" errors="0">
+          <properties></properties>
+        <testcase name="'Hello world' have size 11" time="0" classname="HelloWorldSpec">
+              
+            </testcase><testcase name="'Hello world' starts with 'Hello'" time="0" classname="HelloWorldSpec">
+              
+            </testcase><testcase name="'Hello world' ends with 'world'" time="0" classname="HelloWorldSpec">
+              
+            </testcase>
+        <system-out></system-out>
+        <system-err></system-err>
+      </testSuite>
