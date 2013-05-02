@@ -4,6 +4,7 @@ project/target
 test-reports
 target
 tmp
+logs
 .history
 dist
 .*
