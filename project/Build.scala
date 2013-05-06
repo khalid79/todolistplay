@@ -5,14 +5,20 @@ import PlayProject._
 object ApplicationBuild extends Build {
 
     val appName         = "todolistplayrun"
-    val appVersion      = "1.0-SNAPSHOT"
+    val appVersion      = "1.0"
 
     val appDependencies = Seq(
       // Add your project dependencies here,
     ) 
 
     val main = PlayProject(appName, appVersion, appDependencies, mainLang = SCALA).settings(
-      // Add your own project settings here      
+    	publishTo := Some(
+    		"My resolver" at "http://ec2-54-236-226-98.compute-1.amazonaws.com/nexus/content/repositories/releases"
+    	),
+
+    	credentials += Credentials(
+    		"Repo", "http://ec2-54-236-226-98.compute-1.amazonaws.com/nexus/content/repositories/releases", "deployment", "deploy"
+    	)    
     )
 
 }
