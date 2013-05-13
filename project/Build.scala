@@ -12,13 +12,13 @@ object ApplicationBuild extends Build {
     ) 
 
     val main = PlayProject(appName, appVersion, appDependencies, mainLang = SCALA).settings(
-    	publishTo := Some(
+/*    	publishTo := Some(
     		"My resolver" at "http://ec2-54-236-226-98.compute-1.amazonaws.com/nexus/content/repositories/releases"
     	),
 
     	credentials += Credentials(
-    		"Repo", "http://ec2-54-236-226-98.compute-1.amazonaws.com/nexus/content/repositories/releases", "deployment", "deploy"
-    	)    
+    		"Releases", "http://ec2-54-236-226-98.compute-1.amazonaws.com/nexus/", "deployment", "deploy"
+    	)    */
     )
 
 }
