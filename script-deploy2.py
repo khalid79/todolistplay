@@ -59,47 +59,16 @@ def main():
     print ""
     print "\t -- Play2 continuous deployment  --"
     print ""
+    jsonBuildStatus = getBuildStatus()
 
-    #Quit gracefully
-    signal.signal(signal.SIGINT, quit)
-    signal.signal(signal.SIGTERM, quit)
-
-    #Loop until interruption or kill signals
-    while True:
-
-        need = needDeployment()
-        
-        print "-------------> need %s" % need
-        if (need.value):
-            print ""
-            print "\t ~ Deployment of " + str(need.revision) + " ( Build " + str(need.number) + " ) "  + "start "
-            print ""
-
-            #go in the work directory
-            previous = os.getcwd()
-            os.chdir(env)
-
-            checkout(need.revision)
-            deploy()
-
-            #go back in our current directory
-            os.chdir(previous)
-
-            updateLastDeployed(need.number)
-            print ""
-            print "\t ~  " + str(need.revision) + " has been successfuly deployed !"
-            print ""
-        
-        elif not(isRunning()):
-            print ""
-            print "\t ~ Start of alreday checked out application start "
-            print ""
-            deploy()
-            print ""
-            print "\t ~ has been successfuly deployed !"
-            print ""    
-
-        time.sleep(int(poll_delay));
+    if jsonBuildStatus.has_key( "artifacts" ):
+        artifacts = jsonBuildStatus['artifacts']
+        for art in artifacts:
+            if art['fileName'].find(artifactExtension) > -1:
+                artURL = lastBuildArtifactLURL % (job,art['relativePath'])
+                downloadFile(str(artURL),localSaveDir + "/" + str(art['fileName']))
+    else:
+        raise Exception("\t ~ Error: Unable to get artifacts from hudson")
 
 
 def needDeployment():
