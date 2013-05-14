@@ -10,11 +10,22 @@ import zipfile
 import stat
 import signal
 import subprocess
+import shutil
+import time
+import glob
 
 ##########
 # configuration
 # job name from jenkins, they are expected to be URL encoded already
-
+jobName = "github-test"
+build_host = "ec2-54-236-226-98.compute-1.amazonaws.com"
+lastBuildAPIURL = "http://" + build_host + "/job/%s/lastSuccessfulBuild/api/json"
+lastBuildArtifactLURL = "http://" + build_host + "/job/%s/lastSuccessfulBuild/artifact/%s"
+workDir = "/application/directory/work"
+artifactExtension=".zip"
+user = "admin"
+token = "d9ca57326d1d9547bc61205329142ee8"
+play_conf_resource = "application.conf"
 
 
 ########## Utils ###########
@@ -48,28 +59,50 @@ def unZipFile(filename):
 def encodeUserData(user, token):
     return { 'Authorization' : 'Basic %s' % base64.b64encode(user+':'+token) }
 
-def deploy(processname):
-    for line in os.popen("ps xa | grep %s" % processname):
-        pid = line.split()[0]
-        if "java" in line and processname in line :
-            print "Kill the process %s" % pid
-            # Kill the Process.
-            os.kill(int(pid), signal.SIGTERM)
-            #leave 3 seconds to terminate properly
-            time.sleep(3)
-            os.kill(int(pid), signal.SIGKILL)
-            break
+def stopRunningInstance():
+    files = glob.glob(workDir+'/*/RUNNING_PID')
+    if len(files) > 0:
+        pid = runningPid(files[0])
+        if pidAlive(pid):
+            print "\t ** Stop running instance "
+            os.kill(pid, signal.SIGKILL)
+       
 
-    # Starting application
+def deploy():
     cmd = "sh start -Dconfig.resource=" + play_conf_resource
     subprocess.Popen(cmd, shell=True)
+   
 
+def runningPid(runningPidFile):
+    file = open(runningPidFile, "r")
+    content = file.read()
+    pid = int(content)
+    file.close()
+    return pid
+
+def pidAlive(pid):
+    try:
+        os.kill(pid, 0)
+    except OSError, err:
+        if err.errno == errno.ESRCH:
+            return False
+    return True
 
 def main(): 
     print "\t -- Fetching artifacts from Jenkins --"
 
     if not os.path.exists(workDir):
         raise Exception("\t ~ Error: Unable to find work directory")
+
+    # stop instance
+    stopRunningInstance()
+
+    # Cleaning working directory
+    for f in glob.glob(workDir+'/*'):
+        if os.path.isfile(f):
+            os.remove(f)
+        else:
+            shutil.rmtree(f)
 
     buf = cStringIO.StringIO()
     jobURL = lastBuildAPIURL % (jobName)
@@ -102,7 +135,7 @@ def main():
     os.chdir(artName.strip(artifactExtension))
     os.chmod("start", stat.S_IEXEC)
     print "\t ** Starting application"
-    deploy(artName.strip(artifactExtension))
+    deploy()
     print "\t -- Done --"
     buf.close()
     sys.exit(0)
